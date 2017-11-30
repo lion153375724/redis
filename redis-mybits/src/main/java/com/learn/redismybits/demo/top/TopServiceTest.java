@@ -8,8 +8,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.ListOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.google.gson.Gson;
 import com.learn.redismybits.RedisMybitsApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,7 +20,26 @@ import com.learn.redismybits.RedisMybitsApplication;
 public class TopServiceTest {
 	@Autowired
 	TopService_redis topService;
+	@Autowired
+	private RedisTemplate redisTemplate;
 
+	@Test
+	public void initELKDate(){
+		MemberBean memberBean = null;
+		Random r = new Random();
+		for(int i=0; i<300; i++){
+			memberBean = new MemberBean("Second"+i,40+r.nextInt(10),r.nextInt(100)*10,"three");
+			try {
+				ListOperations ops = redisTemplate.opsForList();
+				Gson gson = new Gson();
+				System.out.println(gson.toJson(memberBean));
+				ops.leftPush("logstash", gson.toJson(memberBean));
+			}catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	@Test
 	public void init(){
 		MemberBean memberBean = null;

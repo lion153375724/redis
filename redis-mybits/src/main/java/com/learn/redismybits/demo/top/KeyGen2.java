@@ -96,15 +96,5 @@ public enum KeyGen2 {
     private final static DateTimeFormatter monthSdf = DateTimeFormatter.ofPattern("yyyy-MM");
     private final static String split = ":";
 
-    public String genKey(Object obj) {
-        throw new AbstractMethodError();
-    }
-
-    public String genDateKey(LocalDateTime time) {
-        throw new AbstractMethodError();
-    }
-
-    public String genKeyWithDate(Object obj, LocalDateTime time) {
-        throw new AbstractMethodError();
-    }
+   
 }

@@ -23,8 +23,8 @@
 	</appender>
 
 	<!-- 需要记录日志的包 -->
-	<logger name="org.springframework" level="INFO" />
-	<logger name="org.apache.zookeeper.ClientCnxn" level="INFO" />
+	<!-- <logger name="org.springframework" level="INFO" />
+	<logger name="org.apache.zookeeper.ClientCnxn" level="INFO" /> -->
 	
      <root level="DEBUG"> 
 		<!--<root level="DEBUG">-->

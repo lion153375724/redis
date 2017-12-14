@@ -1,0 +1,9 @@
+spring:
+  redis:
+    host: 10.17.1.188
+    port: 6379
+    password: 123456
+  session:
+    store-type: redis 
+  thymeleaf:
+    cache: false
